@@ -1,0 +1,46 @@
+/**
+ * mario.c
+ *
+ * Edward Paulino
+ * epaulino2@gmail.com
+ * 
+ * Generates a Mario castle of a given height.
+ */
+
+#include <cs50.h>
+#include <stdio.h>
+
+int main(void)
+{
+    // receives input from user and sets benchmarks for later.
+    int height, counter, y;
+    counter = 0;
+    printf("\nWelcome to Mario!\nEnter a number to generate a castle!\n \n");
+    height = GetInt();
+    y = height;
+    
+    // rejects invalid values from user
+    while (height > 23 || height < 0 )
+    {
+        printf("Number must be between 1 and 23\nPlease try again\n");
+        height = GetInt();
+        y = height;
+    }
+    
+    // loop creates spaces, hashes, and next line for each line
+    for(int x = height; x > 0 ; x--)
+    {
+        counter = 0;
+        for(int space = x + 1; space > 2; space--)
+        {   
+            printf(" ");
+            counter = counter + 1;
+        }
+        for(int hash = y - counter + 1; hash > 0 ; hash--)
+        {
+            printf("#");
+        }
+        
+        printf("\n");
+    }   
+}

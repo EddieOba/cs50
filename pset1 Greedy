@@ -1,0 +1,58 @@
+/**
+ * greedy.c
+ *
+ * Edward Paulino
+ * epaulino2@gmail.com
+ *
+ * Returns least number of coins to make change for given amount.
+ */
+
+#include <cs50.h>
+#include <stdio.h>
+#include <math.h>
+
+int main(void)
+{
+    float change;
+    int coins;
+    
+    // gets input from user, and checks it is a valid value. 
+    printf("Greetings comrade. How much change?\n");
+    change = GetFloat();
+    while (change <= 0 )
+    {
+        printf("Sorry friend. You gotta have more than that.\n");
+        change = GetFloat();
+    }
+    
+    coins = 0;
+    change = change * 100;
+    change = round(change);
+    
+    // next four loops increase coin # as they reduce change amount.
+    while (change >= 25)
+    {
+        coins = coins + 1;
+        change = change - 25;
+    }
+        
+    while (change >= 10)
+    {
+        coins = coins + 1;
+        change = change - 10;
+    }
+        
+    while (change >= 5)
+    {
+        coins = coins + 1;
+        change = change - 5;
+    }      
+     
+    while (change >= 1)
+    {
+        coins = coins + 1;
+        change = change - 1;
+    }
+    
+    printf("%d\n", coins);
+}
